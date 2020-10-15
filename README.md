@@ -13,7 +13,7 @@ Download tomtom app and dependencies:<br />
 `wget http://archive.ubuntu.com/ubuntu/pool/universe/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.5ubuntu1_amd64.deb`<br />
 `wget http://archive.ubuntu.com/ubuntu/pool/universe/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-2ubuntu0.2_amd64.deb`<br />
 
-And install them:
+And install them:<br />
 `dpkg -i libgstreamer0.10-0_0.10.36-1.5ubuntu1_amd64.deb`<br />
 `dpkg -i libgstreamer-plugins-base0.10-0_0.10.36-2ubuntu0.2_amd64.deb`<br />
 `dpkg -i tomtomsportsconnect.x86_64.deb`<br />

@@ -1,4 +1,6 @@
-# TomTom Sports Connect(Ubuntu 20.04/Mint-20)<br />
+# TomTom Sports Connect(Ubuntu 20.04/Mint 20)<br />
+
+Guide to install TomTom Sports Connect on 64-bit Ubuntu 20.04 or Mint 20.<br />
 
 ![](tomtom-sports-connect.png)
 

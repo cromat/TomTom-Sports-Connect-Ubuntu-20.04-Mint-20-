@@ -28,5 +28,5 @@ Open `/usr/share/applications/tomtomsportsconnect.desktop` (as root) in any edit
 `sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/local/TomTomSportsConnect/bin/TomTomSportsConnect"`
 
 Download and set pkexec policy for tomtom application:<br /> 
-`wget  -P /usr/share/polkit-1/actions/`
-`sudo chown root /usr/share/polkit-1/actions/`
+`wget https://raw.githubusercontent.com/cromat/TomTom-Sports-Connect-Ubuntu-20.04-Mint-20-/main/org.freedesktop.policykit.tomtomsportsconnect.policy -P /usr/share/polkit-1/actions/`
+`sudo chown root /usr/share/polkit-1/actions/org.freedesktop.policykit.tomtomsportsconnect.policy`

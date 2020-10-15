@@ -18,19 +18,21 @@ Download tomtom app and dependencies:<br />
 `wget http://archive.ubuntu.com/ubuntu/pool/universe/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-2ubuntu0.2_amd64.deb`<br />
 
 And install them:<br />
-`dpkg -i libgstreamer0.10-0_0.10.36-1.5ubuntu1_amd64.deb`<br />
-`dpkg -i libgstreamer-plugins-base0.10-0_0.10.36-2ubuntu0.2_amd64.deb`<br />
-`dpkg -i tomtomsportsconnect.x86_64.deb`<br />
+`sudo dpkg -i libgstreamer0.10-0_0.10.36-1.5ubuntu1_amd64.deb`<br />
+`sudo dpkg -i libgstreamer-plugins-base0.10-0_0.10.36-2ubuntu0.2_amd64.deb`<br />
+`sudo dpkg -i tomtomsportsconnect.x86_64.deb`<br />
 
 You can run tomtom from start menu or terminal (for logs) with:<br />
 `/usr/local/TomTomSportsConnect/bin/TomTomSportsConnect`<br />
 
-It didn't work when I ran it as regular user and I got "We could not connect to your watch", so I needed to run it as root with sudo.
+It didn't work when I ran it as regular user and I got "We could not connect to your watch", so I needed to run it as root with `sudo`.
 
-You can edit launcher to make it execute as root.<br />
-Open `/usr/share/applications/tomtomsportsconnect.desktop` (as root) in any editor and set following value for Exec<br />
-`sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/local/TomTomSportsConnect/bin/TomTomSportsConnect"`
+### You can edit launcher to make it execute as root as follows:<br />
 
 Download and set pkexec policy for tomtom application:<br /> 
-`wget https://raw.githubusercontent.com/cromat/TomTom-Sports-Connect-Ubuntu-20.04-Mint-20-/main/org.freedesktop.policykit.tomtomsportsconnect.policy -P /usr/share/polkit-1/actions/`
+`wget https://raw.githubusercontent.com/cromat/TomTom-Sports-Connect-Ubuntu-20.04-Mint-20-/main/org.freedesktop.policykit.tomtomsportsconnect.policy`
+`sudo cp org.freedesktop.policykit.tomtomsportsconnect.policy /usr/share/polkit-1/actions/`<br />
 `sudo chown root /usr/share/polkit-1/actions/org.freedesktop.policykit.tomtomsportsconnect.policy`
+
+Open `/usr/share/applications/tomtomsportsconnect.desktop` (as root) in any editor and set following value for Exec<br />
+`sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/local/TomTomSportsConnect/bin/TomTomSportsConnect"`

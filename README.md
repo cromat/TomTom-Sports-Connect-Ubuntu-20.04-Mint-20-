@@ -30,7 +30,7 @@ It didn't work when I ran it as regular user and I got "We could not connect to 
 ### You can edit launcher to make it execute as root as follows:<br />
 
 Download and set pkexec policy for tomtom application:<br /> 
-`wget https://raw.githubusercontent.com/cromat/TomTom-Sports-Connect-Ubuntu-20.04-Mint-20-/main/org.freedesktop.policykit.tomtomsportsconnect.policy`
+`wget https://raw.githubusercontent.com/cromat/TomTom-Sports-Connect-Ubuntu-20.04-Mint-20-/main/org.freedesktop.policykit.tomtomsportsconnect.policy`<br />
 `sudo cp org.freedesktop.policykit.tomtomsportsconnect.policy /usr/share/polkit-1/actions/`<br />
 `sudo chown root /usr/share/polkit-1/actions/org.freedesktop.policykit.tomtomsportsconnect.policy`
 

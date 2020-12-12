@@ -25,14 +25,26 @@ And install them:<br />
 You can run tomtom from start menu or terminal (for logs) with:<br />
 `/usr/local/TomTomSportsConnect/bin/TomTomSportsConnect`<br />
 
-It didn't work when I ran it as regular user and I got "We could not connect to your watch", so I needed to run it as root with `sudo`.
+It didn't work when you ran it as a regular user and you got "We could not connect to your watch". This is due to the invalid syntax <br />
+of the udev rules in `/etc/udev/rules.d/tomtomsportsconnect.rules`. <br />
+Indeed, there as some changes with the udev version in Ubuntu 20.04/Mint 20. So you have to update the file as following:<br />
 
-### You can edit launcher to make it execute as root as follows:<br />
+    # TomTom Fitness Watch
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7474", MODE="0666", GROUP="plugdev"
+    # TomTom Fitness Watch
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7475", MODE="0666", GROUP="plugdev" 
+    # TomTom Fitness Watch (recovery)
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7476", MODE="0666", GROUP="plugdev" 
+    # TomTom Fitness Watch (no ms)
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7477", MODE="0666", GROUP="plugdev" 
+    # TomTom Activity Tracker
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7480", MODE="0666", GROUP="plugdev" 
+    # TomTom Fitness Watch
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7485", MODE="0666", GROUP="plugdev" 
+    # TomTom Fitness Watch (recovery)
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7486", MODE="0666", GROUP="plugdev" 
+    # TomTom Fitness Watch (no ms)
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1390", ATTRS{idProduct}=="7487", MODE="0666", GROUP="plugdev"
 
-Download and set pkexec policy for tomtom application:<br /> 
-`wget https://raw.githubusercontent.com/cromat/TomTom-Sports-Connect-Ubuntu-20.04-Mint-20-/main/org.freedesktop.policykit.tomtomsportsconnect.policy`<br />
-`sudo cp org.freedesktop.policykit.tomtomsportsconnect.policy /usr/share/polkit-1/actions/`<br />
-`sudo chown root /usr/share/polkit-1/actions/org.freedesktop.policykit.tomtomsportsconnect.policy`
-
-Open `/usr/share/applications/tomtomsportsconnect.desktop` (as root) in any editor and set following value for Exec<br />
-`sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/local/TomTomSportsConnect/bin/TomTomSportsConnect"`
+Then, the udev rules have to be reloaded:<br />
+`udevadm control --reload-rules && udevadm trigger`
